@@ -39,6 +39,14 @@ module Administrate
         options.fetch(:destroy_url, nil)
       end
 
+      def reposition_url
+        options.fetch(:reposition_url, nil)
+      end
+
+      def order_by
+        options.fetch(:order_by, :id)
+      end
+
       # currently we are using Rails.application.routes.url_helpers
       # without including the namespace because it runs into an
       # exception

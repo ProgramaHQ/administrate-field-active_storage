@@ -33,6 +33,16 @@ controlled via a boolean local variable.
   <%= link_to attachment.filename, field.blob_url(attachment), title: attachment.filename %>
 </div>
 
+<% if field.reposition_url.present? %>
+  <% up_url = field.reposition_url.call(namespace, attachment, :up) %>
+  <% down_url = field.reposition_url.call(namespace, attachment, :down) %>
+  <div>
+    <%= link_to I18n.t("administrate.fields.active_storage.move_up", default: 'move up'),
+                up_url, method: :patch, class: 'move-attachment-link' %> |
+    <%= link_to I18n.t("administrate.fields.active_storage.move_down", default: 'move down'),
+                down_url, method: :patch, class: 'move-attachment-link' %>
+  </div>
+<% end %>
 <% if field.destroy_url.present? %>
   <% destroy_url = field.destroy_url.call(namespace, field.data.record, attachment) %>
   <div>
