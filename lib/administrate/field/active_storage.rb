@@ -44,7 +44,7 @@ module Administrate
       end
 
       def order_by
-        options.fetch(:order_by, :id)
+        options.fetch(:order_by, nil)
       end
 
       # currently we are using Rails.application.routes.url_helpers

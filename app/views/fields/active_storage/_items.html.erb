@@ -17,7 +17,7 @@ This partial renders one or more attachments
   removable = local_assigns.fetch(:removable, false)
 %>
 
-<% field.attachments.order(field.order_by).each do |attachment| %>
+<% (field.order_by.present? ? field.attachments.order(field.order_by) : field.attachments).each do |attachment| %>
   <div class="attachments-listing">
     <%= render partial: 'fields/active_storage/item',
                locals: {
