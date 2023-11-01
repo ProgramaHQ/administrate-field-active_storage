@@ -30,7 +30,7 @@ By default, the input is a text field for the image's URL.
           I18n.t("administrate.fields.active_storage.replace", default: 'Replace')
     %>
     <%= f.file_field field.attribute, multiple: field.many?, direct_upload: field.direct? %>
-    <% if field.can_add_attachment? && field.many? && Rails.application.config.active_storage.replace_on_assign_to_many %>
+    <% if field.can_add_attachment? && field.many? && Rails.application.config.active_storage.replace_on_assign_to_many && field.attachments.present? %>
       <% field.attachments.each do |attachment| %>
         <%= f.hidden_field field.attribute, multiple: true, value: attachment.signed_id %>
       <% end %>
